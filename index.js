@@ -1,9 +1,13 @@
-const { getDataPromise, courseId } = require("./utils/core/crawler");
+const { getDataPromise } = require("./utils/core/crawler");
 const getXlsx = require("./utils/xlsx");
 const fs = require("fs");
+/**
+ * @description 课程 url 中的 id，https://coding.imooc.com/class/chapter/354.html，id 为 354
+ */
+const courseId = 354;
 
 // 核心
-getDataPromise.then((data) => {
+getDataPromise(courseId).then((data) => {
 	// 存储爬取到的数据
 	fs.writeFile(
 		__dirname + `/data/${courseId}.json`,

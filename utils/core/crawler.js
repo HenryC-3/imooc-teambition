@@ -3,11 +3,6 @@ const https = require("https");
 
 const baseUrl = "https://coding.imooc.com/class/chapter";
 
-/**
- * @description 课程 url 中的 id，https://coding.imooc.com/class/chapter/354.html，id 为 354
- */
-const courseId = 354;
-
 const courseSeletors = {
 	courseName: "div.title-box>:first-child",
 	chapters: ".chapter", // 章 DOM 节点
@@ -48,7 +43,7 @@ function getPageAsync(url) {
  * @returns {Object} courseData
  * @todo 考虑拆分该函数至其他模块
  */
-function getData(html) {
+function filter(html, courseId) {
 	const courseData = {
 		name: "",
 		duration: "",
@@ -124,11 +119,9 @@ module.exports = {
 	 * @description 返回包含爬取数据的 resolved promise，通过 then 获取数据
 	 * @todo 如何使用 JSDoc 标注对象键
 	 */
-	getDataPromise: getPageAsync(getCourseUrl(courseId)).then((page) => {
-		return getData(page);
-	}),
-	/**
-	 * @description 课程 id
-	 */
-	courseId: courseId,
+	getDataPromise: function (courseId) {
+		return getPageAsync(getCourseUrl(courseId)).then((page) => {
+			return filter(page, courseId);
+		});
+	},
 };
