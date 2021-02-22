@@ -2,7 +2,7 @@
 
 为了批量创建 teambition 任务、爬取慕课网课程章节页而写的一些小脚本
 
-## 目录
+## 项目目录
 ```txt
 ├── README.md
 ├── data
@@ -37,3 +37,12 @@
 1. 下载 teambition 导入模板后，需要删除模板首行说明与空行，只保留属性行
 2. 需事先在 teambition 中创建标签，否则在导入 xlsx 文件时，如果 xlsx 文件中填写了 teambition 中不存在的标签，将导入失败
 3. 父任务必须是 xlsx 文件中的任务之一，否则在导入 xlsx 文件时，即使 teambition 中存在父任务，也会导入失败
+
+## 使用
+```javascript
+const myWorkflow = require("./utils/myWorkflow");
+const courseId = 354; // 课程 id
+
+myWorkflow(courseId);
+```
+`myWorkflow` 会根据课程 id 爬取慕课网课程章节页，爬取完毕后读取 `templates` 目录下的模板，随后生成可供 teambition 导入的 `课程 id.xlsx` 文件，存放在 `output` 目录下
