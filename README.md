@@ -39,6 +39,7 @@
 1. 下载 teambition 导入模板后，需要删除模板首行说明与空行，只保留属性行
 2. 需事先在 teambition 中创建标签，否则在导入 xlsx 文件时，如果 xlsx 文件中填写了 teambition 中不存在的标签，将导入失败
 3. 父任务必须是 xlsx 文件中的任务之一，否则在导入 xlsx 文件时，即使 teambition 中存在父任务，也会导入失败
+4. 可能存在部分章节标题不规范而导致爬取失败，例如[示例目录](https://coding.imooc.com/class/chapter/449.html#Anchor)，在相应代码处添加`try...catch` 确保代码正常运行
 
 ## 使用
 ```javascript
