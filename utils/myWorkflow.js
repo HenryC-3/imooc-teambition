@@ -9,7 +9,7 @@ module.exports = function myWorkflow(courseId) {
 	getDataPromise(courseId).then((data) => {
 		// 存储爬取到的数据
 		fs.writeFile(
-			__dirname + `/data/${courseId}.json`,
+			__dirname + `/../data/${courseId}.json`,
 			JSON.stringify(data),
 			() => {
 				console.log("已将爬取数据存储为 JSON");
