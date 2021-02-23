@@ -41,8 +41,8 @@ function getPageAsync(url) {
  *
  * @param {String} html
  * @returns {Object} courseData
- * @todo 考虑拆分该函数至其他模块
  */
+// REFA-R:拆分 filter 为单独模块
 function filter(html, courseId) {
 	const courseData = {
 		name: "",
@@ -62,9 +62,7 @@ function filter(html, courseId) {
 
 	$(courseSeletors.chapters).each(function (i) {
 		const chapter = $(this);
-		/**
-		 * @todo 正则表达式分组使用方法
-		 */
+		// VIEW:正则表达式分组使用方法
 		const reDuration = /(\()([0-9]+)/;
 
 		// 章名
@@ -109,16 +107,14 @@ function filter(html, courseId) {
 	return courseData;
 }
 
-/**
- * @url https://stackoverflow.com/a/42958644/10915537
- * @todo 使用 async/await 重构包含 promise 的部分 https://stackoverflow.com/a/56262272/10915537
- * @todo 将该模块重构为：接受 url 参数，返回数据的形式
- */
+// VIEW:关于导出 Promise 的讨论 https://stackoverflow.com/a/42958644/10915537
+// REFA-V:使用 async/await 重构包含 promise 的部分 https://stackoverflow.com/a/56262272/10915537
+// REFA-V:将该模块重构为：接受 url 参数，返回数据的形式
 module.exports = {
 	/**
 	 * @description 返回包含爬取数据的 resolved promise，通过 then 获取数据
-	 * @todo 如何使用 JSDoc 标注对象键
 	 */
+	// VIEW:如何使用 JSDoc 标注对象键
 	getDataPromise: function (courseId) {
 		return getPageAsync(getCourseUrl(courseId)).then((page) => {
 			return filter(page, courseId);

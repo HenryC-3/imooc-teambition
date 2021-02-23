@@ -1,18 +1,7 @@
 const { getDataPromise, courseId } = require("./core/crawler");
 const fs = require("fs");
 
-// # Node.js 仿知乎 [🔗](url)
-
-// ## 目录
-// ### 第一章
-//   - 第一节
-// ### 第二章
-//   - 第一节
-//   - 第二节
-
-/**
- * @todo 修复最终生成 md 文件内容排版错误的 bug
- */
+// BUG:最终生成 md 文件内容排版错误
 getDataPromise.then((data) => {
 	let md = `# ${data.name} [🔗](${data.url})
     ## 目录

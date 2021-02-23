@@ -50,9 +50,9 @@ function getXlsxData(data) {
  * @param {String} status 收集箱 | 已检查 | 待执行 | 执行中 | 已完成
  * @param {String} note 备注，章节描述
  * @returns {Object} 数组
- * @todo 如何使用 JSDoc 标注返回值 https://jsdoc.app/tags-returns.html
- * @todo 重构参数传递方式
  */
+// VIEW:如何使用 JSDoc 标注返回值 https://jsdoc.app/tags-returns.html
+// REFA-V:重构参数传递方式
 function getRow(title, parentTask, status, note = "") {
 	let assignee = "Henry";
 	let participant = "Henry";
