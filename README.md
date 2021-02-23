@@ -23,10 +23,12 @@
 - utils: 功能库
 
 ## 功能模块
-- crawler: 爬取慕课网章节页，抽取章节信息以 JSON 形式存储
-- mdListFormate: 将章节信息导出为 markdown 格式
-- teambition: 使用 teambition RESTful API 创建任务
-- xlsx: 选择模板填入章节信息，生成 xlsx 文件，用于导入 teambition 任务
+> 勾选表示该模块可用
+- [x] crawler: 爬取慕课网章节页，抽取章节信息以 JSON 形式存储
+- [ ] mdListFormate: 将章节信息导出为 markdown 格式
+- [ ] teambition: 使用 teambition RESTful API 创建任务
+- [x] xlsx: 选择模板填入章节信息，生成 xlsx 文件，用于导入 teambition 任务
+- [x] myWorkflow: 调用 crawler 及 xlsx 模块
 
 ## 核心流程
 1. 选定需要爬取的课程，调用 crawler 爬取
