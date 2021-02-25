@@ -94,14 +94,18 @@ function filter(html, courseId) {
 
 			// 节名
 			const setionName = rawText.split("(")[0].trim();
-			// 节时长
-			const sectionDuration = reDuration.exec(rawText)[2];
+			try {
+				// 节时长
+				const sectionDuration = reDuration.exec(rawText)[2];
 
-			const data = {
-				name: setionName,
-				duration: sectionDuration,
-			};
-			courseData.chapter[i].section.push(data);
+				const data = {
+					name: setionName,
+					duration: sectionDuration,
+				};
+				courseData.chapter[i].section.push(data);
+			} catch (e) {
+				console.log(`${rawText}，本节未添加时长`);
+			}
 		});
 	});
 	return courseData;
